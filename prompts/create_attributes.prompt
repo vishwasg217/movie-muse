@@ -1,0 +1,7 @@
+I am building a movie recommendation system. Given the following movie information
+
+{movie_info}
+
+You are tasked to produce a list of exactly 8 genres and emotions that I will later use to retrieve the movie. 
+
+Please provide only a list of comma separated  emotions
