@@ -42,6 +42,13 @@ def create_db(data: json, db_name: str, active_loop_id: str = "vishwasg217"):
     print(f"Accessed dataset at {dataset_path}")
     return db
 
+def load_db(db_name: str, active_loop_id: str = "vishwasg217"):
+    dataset_path  = f"hub://{active_loop_id}/{db_name}"
+    OPEN_AI_API, ACTIVELOOP_TOKEN = get_credentials()
+    embeddings = OpenAIEmbeddings(openai_api_key=OPEN_AI_API)
+    db = DeepLake(dataset_path=dataset_path, embedding=embeddings, read_only=True)
+    return db
+
 
 if __name__ == "__main__":
     data = load_data("data/processed/final_data.json")
