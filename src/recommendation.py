@@ -35,12 +35,12 @@ def recommend(user_input: str):
     for match in matches:
         print(match[0].metadata["movie_name"], match[1])
 
-        movies.append(zip(match[0].metadata["movie_name"], 
+        movies.append([match[0].metadata["movie_name"], 
                         match[0].metadata['year'], 
                         match[0].metadata['genres'], 
                         match[0].metadata['avg_rating'], 
                         match[0].metadata['votes'],
-                        match[1]))
+                        match[1]])
         
     return movies
 

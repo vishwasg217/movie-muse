@@ -11,4 +11,5 @@ if st.button("Search"):
     movies = recommend(user_input=user_input)
 
     for movie in movies:
-        st.write(movie)
+        st.subheader(movie[0])
+        st.write(f"Genre: {movie[2]} | Year: {movie[1]} | Score: {movie[3]}/10 | Votes: {movie[4]}")
