@@ -5,18 +5,16 @@ from dotenv import dotenv_values
 
 config = dotenv_values(".env")
 
-GOOGLE_API_KEY = config["GOOGLE_API_KEY"]
-GOOGLE_CSE_ID = config["GOOGLE_CSE_ID"]
+BING_SUBSCRIPTION_KEY = config["BING_SUBSCRIPTION_KEY"]
+BING_SEARCH_URL = config["BING_SEARCH_URL"]
 
-search = GoogleSearchAPIWrapper(google_api_key=GOOGLE_API_KEY, google_cse_id=GOOGLE_CSE_ID, k=1)
+from langchain.utilities import BingSearchAPIWrapper
+
+search = BingSearchAPIWrapper(bing_subscription_key=BING_SUBSCRIPTION_KEY, bing_search_url=BING_SEARCH_URL,k=1)
+
+print(search.results("find me the link for streaming the movie the dark knight in India ", 5)[0])
 
 
 
-tool = Tool(
-    name="Google Search",
-    description="Search Google and return a link.",
-    func=search.run,
-)
 
-print(tool.run("provide me only the link for streaming the dark knight online in India specifically"))
 

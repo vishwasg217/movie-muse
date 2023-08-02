@@ -26,7 +26,7 @@ def recommend(user_input: str):
 
     chain.run(user_input)
 
-    db = load_db("movie_db")
+    db = load_db("movie-db")
 
     matches = db.similarity_search_with_score(user_input, k=10)
 
@@ -35,7 +35,8 @@ def recommend(user_input: str):
     for match in matches:
         print(match[0].metadata["movie_name"], match[1])
 
-        movies.append([match[0].metadata["movie_name"], 
+        movies.append([match[0].metadata["movie_name"],
+                       match[0].metadata["movie_id"], 
                         match[0].metadata['year'], 
                         match[0].metadata['genres'], 
                         match[0].metadata['avg_rating'], 

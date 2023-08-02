@@ -26,6 +26,7 @@ def create_db(data: json, db_name: str, active_loop_id: str = "vishwasg217"):
         metadata.append(
             {
                 "movie_name": key,
+                "movie_id": value['movie_id'],
                 "year": value['year'],
                 "genres": value['genres'],
                 "avg_rating": value['average_rating'],
@@ -52,6 +53,6 @@ def load_db(db_name: str, active_loop_id: str = "vishwasg217"):
 
 if __name__ == "__main__":
     data = load_data("data/processed/final_data.json")
-    db = create_db(data, "movie_db")
+    db = create_db(data, "movie-db")
 
 
